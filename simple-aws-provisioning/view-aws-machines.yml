@@ -1,0 +1,12 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: False
+  tasks:
+  - name: view machines
+    ec2_instance_info:
+      region: us-east-1
+      filters:
+        "instance-state-name": running
+    register: instance_list
+  - debug: var=instance_list

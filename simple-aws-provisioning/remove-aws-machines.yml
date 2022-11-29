@@ -1,0 +1,19 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: False
+  tasks:
+  - name: view machines
+    ec2_instance_info:
+      region: us-east-1
+      filters:
+        "instance-state-name": running
+        "tag:project": AnsibleScaling
+    register: instance_list
+  - debug: var=instance_list
+  - set_fact: instance_ids="{{instance_list.instances|map(attribute='instance_id')|list}}"
+  - name: remove instances
+    ec2:
+      region: us-east-1
+      instance_ids: "{{instance_ids}}"
+      state: absent

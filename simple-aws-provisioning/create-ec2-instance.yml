@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+  - name: create a vm
+    ec2_instance: 
+      name: demo-create-ec2-vm
+      image_id: ami-0b0ea68c435eb488d
+      region: us-east-1
+      instance_type: t1.micro 
+      tags:
+        project: AnsibleScaling
