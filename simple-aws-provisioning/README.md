@@ -15,7 +15,14 @@ ansible 2.10.8
   
   python version = 3.10.6 (main, Nov  2 2022, 18:53:38) [GCC 11.3.0]
 
-# Prerequisites
+# AWS Prerequisites
+* install cli
+```
+ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+ unzip awscliv2.zip
+ sudo ./aws/install
+```
+
 * create security group
 * create administration user
 * create administration grup
